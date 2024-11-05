@@ -1,2 +1,4 @@
 backend/.idea
 .idea
+backend/poetry.lock
+**/__pycache__
