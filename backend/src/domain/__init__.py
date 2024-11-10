@@ -1,4 +1,14 @@
 """Domain module."""
-from .http import HttpRequest, RequestsHttp
+from .api_call import(
+    AssetApiCall,
+    CampaignApiCall,
+    CampaignCreativeApiCall,
+    InsightApiCall
+)
 
-__all__ = ["HttpRequest", "RequestsHttp"]
+__all__ = [
+    "AssetApiCall",
+    "CampaignApiCall",
+    "CampaignCreativeApiCall",
+    "InsightApiCall",
+]

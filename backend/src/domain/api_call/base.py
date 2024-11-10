@@ -1,6 +1,8 @@
 """Http request base."""
 from abc import ABC, abstractmethod
 
+
+
 class HttpRequest(ABC):
     """Http request base class.
 
@@ -14,11 +16,11 @@ class HttpRequest(ABC):
     """
 
     @abstractmethod
-    def get(self, path, arguments: dict) -> dict:
+    def get(self, path, arguments: dict|None) -> dict|list:
         """http get method."""
 
     @abstractmethod
-    def post(self, body: dict) -> dict:
+    def post(self, path, body: dict|None, files: list|None) -> dict|list:
         """http post method."""
 
     @abstractmethod
