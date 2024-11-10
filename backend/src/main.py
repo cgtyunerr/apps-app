@@ -1,7 +1,7 @@
 """Main project file."""
 from fastapi import FastAPI
-from fastapi.middleware import Middleware
 
+from src.api import asset_router
 from src.middleware import ErrorHandlerMiddleware
 
 app = FastAPI(
@@ -11,3 +11,4 @@ app = FastAPI(
 )
 
 app.add_middleware(ErrorHandlerMiddleware)
+app.include_router(asset_router)
