@@ -3,7 +3,7 @@
 from datetime import datetime
 from typing import Annotated
 
-from sqlalchemy import BIGINT, Boolean, DateTime, String, Enum, REAL
+from sqlalchemy import BIGINT, Boolean, DateTime, String, REAL
 from sqlalchemy.orm import Mapped, declarative_mixin, declared_attr, mapped_column
 
 
