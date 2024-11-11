@@ -33,6 +33,9 @@ class AssetService(Service):
 
         Returns:
             Assets: all assets.
+
+        Raises:
+            NotFoundError: If asset does not exist.
         """
         query_result = await session.execute(select(Asset))
         assets = query_result.scalars().all()
@@ -47,6 +50,9 @@ class AssetService(Service):
                     created_at=asset.created_at,
                 )
             )
+        if len(result) == 0:
+            raise NotFoundError
+
         return result
 
     @validate_call
