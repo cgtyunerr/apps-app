@@ -27,7 +27,7 @@ class CampaignCreativeStatusChecker(Service):
 
             server_campaign_creatives: ServiceCampaignCreativesSchema = []
             for campaign_id in campaigns_set:
-                server_campaign_creatives + campaign_creative_api_call.get_all_campaign_creatives(campaign_id)
+                server_campaign_creatives = server_campaign_creatives + campaign_creative_api_call.get_all_campaign_creatives(campaign_id)
 
             status_schema: dict[int, str] = {}
             for campaign_creative in server_campaign_creatives:

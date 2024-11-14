@@ -28,7 +28,7 @@ class AssetStatusChecker(Service):
             for asset in api_result:
                 result_dict[asset.service_asset_id] = asset.status
             for asset in assets:
-                if result_dict.get(asset.service_asset_id) and result_dict[asset.service_asset_id] == asset.status:
+                if result_dict.get(asset.service_asset_id) and result_dict[asset.service_asset_id] != asset.status:
                     asset.status = result_dict[asset.service_asset_id]
 
             await session.commit()
