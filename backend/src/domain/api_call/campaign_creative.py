@@ -33,7 +33,6 @@ class CampaignCreativeApiCall(ApiCall):
                 created_at=campaign_creative["created_at"],
                 asset_id=campaign_creative["asset_id"],
             ))
-
         return result
 
     @validate_call
