@@ -1,0 +1,33 @@
+/* Assetlerin tümüne genel stiller */
+.asset-card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 10px;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: #f0f0f0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .asset-card img {
+    max-width: 50px;
+    max-height: 50px;
+    margin-right: 10px;
+  }
+  
+  .asset-card .details {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .asset-card .details .name {
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  .asset-card .details .status {
+    font-size: 14px;
+    color: #888;
+  }
+  
