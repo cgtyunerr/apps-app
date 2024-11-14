@@ -2,3 +2,6 @@ backend/.idea
 .idea
 backend/poetry.lock
 **/__pycache__
+frontend/frontend-vue/package-lock.json
+frontend/frontend-vue/README.md
+
