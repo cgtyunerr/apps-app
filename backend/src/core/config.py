@@ -4,6 +4,19 @@ from pydantic import BaseModel, PostgresDsn, computed_field
 from pydantic_core import MultiHostUrl
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
+class RedisSettings(BaseSettings):
+    """Redis settings for the project.
+
+    Attributes:
+        HOST: Hostname of the redis server.
+        PORT: Port number of the redis server.
+    """
+
+    model_config = SettingsConfigDict(env_prefix="_")
+
+    HOST: str
+    PORT: int
+
 class DatabaseConfigurations(BaseModel):
     """Sql DB configurations class.
 
@@ -43,10 +56,11 @@ class Settings(BaseSettings):
     Attributes:
         DB: DatabaseSettings.
         TOKEN: token for main service.
-        BACKEND_URL: Backend URL.
+        BASE_URL: Backend URL.
     """
     model_config = SettingsConfigDict(env_nested_delimiter="__")
 
+    REDIS: RedisSettings
     DB: DatabaseConfigurations
     TOKEN: str
     BASE_URL: str
