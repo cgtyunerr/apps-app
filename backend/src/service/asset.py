@@ -50,8 +50,6 @@ class AssetService(Service):
                     created_at=asset.created_at,
                 )
             )
-        if len(result) == 0:
-            raise NotFoundError
 
         return result
 
@@ -101,7 +99,7 @@ class AssetService(Service):
         for api_asset in api_result:
             new_assets.append(
                 Asset(
-                    service_asset_id=api_asset.id,
+                    service_asset_id=api_asset.service_asset_id,
                     title=api_asset.title,
                     status=api_asset.status,
                     created_at=api_asset.created_at
@@ -137,9 +135,9 @@ class AssetService(Service):
         Return:
             None.
         """
-        asset_api_call.delete_asset(asset_id=asset_id)
         query_result = await session.execute(select(Asset).filter(Asset.id == asset_id))
         asset = query_result.scalar_one_or_none()
         if not asset:
             raise NotFoundError
+        asset_api_call.delete_asset(asset_id=asset.service_asset_id)
         await session.delete(asset)
