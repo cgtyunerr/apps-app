@@ -4,10 +4,12 @@ import asyncio
 from celery.app import Celery
 from celery.schedules import crontab
 
+from src import settings
 from src.api import check_asset_status, check_campaign_creative_status, check_insight
 
 celery: Celery = Celery(
-    "celery-app"
+    "celery-app",
+    broker=f"redis://{settings.REDIS.HOST}:{settings.REDIS.PORT}/0",
 )
 
 @celery.task
@@ -38,7 +40,7 @@ def setup_periodic_tasks(sender, **kwargs):
     )
     sender.add_periodic_task(
         crontab(minute="*/2"),
-        check_campaign_creative_status.s(),
+        check_campaign_creative.s(),
         name="Check campaign creative status.",
     )
     sender.add_periodic_task(
