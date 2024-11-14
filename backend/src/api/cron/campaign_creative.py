@@ -1,7 +1,7 @@
 """Campaign creative cron job api."""
-from src.service import CampaignCreativeService
+from src.service import CampaignCreativeStatusChecker
 
-campaign_creative_status_checker: CampaignCreativeService = CampaignCreativeService()
+campaign_creative_status_checker: CampaignCreativeStatusChecker = CampaignCreativeStatusChecker()
 
 async def check_campaign_creative_status():
     """Check asset status."""
