@@ -4,7 +4,6 @@ from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from .service import Service
-from src.core import NotFoundError
 from src.domain import InsightApiCall
 from src.model import Insight, CampaignCreative
 from src.schema import InsightsSchema, InsightSchema
@@ -55,7 +54,5 @@ class InsightService(Service):
                     created_at=insight.created_at,
                 )
             )
-        if len(result) == 0:
-            raise NotFoundError
 
         return result
